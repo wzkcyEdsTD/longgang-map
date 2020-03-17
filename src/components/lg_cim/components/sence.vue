@@ -8,8 +8,8 @@
 
 <script>
 import { loadModules } from "esri-loader";
-import { doMeshLayer,dobaseVectorLayer } from "./sence.js";
-import {baseurl,dataurl,yxurl} from "../../../config/config"
+import { doMeshLayer, dobaseVectorLayer } from "./sence.js";
+import { baseurl, dataurl, yxurl } from "../../../config/config";
 
 const OPTION = {
   url:
@@ -37,7 +37,7 @@ export default {
             "esri/WebScene",
             "esri/views/SceneView",
             "esri/config",
-            "esri/widgets/Popup",
+            "esri/widgets/Popup"
           ],
           OPTION
         )
@@ -48,15 +48,15 @@ export default {
               id: "threeLayer",
               portalItem: {
                 id: "4d4273e2d2874b34bb2262f6fd5c7115"
-              },
+              }
             });
             //
             // console.log(that.map.allLayers)
-            
+
             var template = {
-  // autocasts as new PopupTemplate()
-  title: "房屋信息",
-  content:`<div class="template">
+              // autocasts as new PopupTemplate()
+              title: "房屋信息",
+              content: `<div class="template">
           <ul><li>出租人：李明</li>
           <li>承租人：王刚</li>
           <li>电话联系：13745983567</li>
@@ -64,16 +64,16 @@ export default {
           <li><div class="template_img"><img src="../../../static/images/ecode.png"></img></div></li>
           </ul>
           </div> `
-};
-// "170d2772d7a-layer-2"
-              that.map.when(function(){
-                                console.log("文字加载")
-                that.map.layers.items.forEach(item => {
-                  if(item.id=="170d2772d7a-layer-2"){
-                    item.popupTemplate=template
-                  }
-                });
-              })
+            };
+            // "170d2772d7a-layer-2"
+            that.map.when(function() {
+              console.log("文字加载");
+              that.map.layers.items.forEach(item => {
+                if (item.id == "170d2772d7a-layer-2") {
+                  item.popupTemplate = template;
+                }
+              });
+            });
 
             // console.log(that.map)
             // console.log(that.map.layers.items[1])
@@ -82,7 +82,16 @@ export default {
 
             that.sceneview = new SceneView({
               map: that.map,
-              container: "senceview"
+              container: "senceview",
+              camera: {
+                position: {
+                  x: 120.54914499,
+                  y: 27.568205,
+                  z: 5000
+                },
+                tilt: 0,
+                heading: 0
+              }
             });
             resolve(true);
           })
@@ -102,15 +111,13 @@ export default {
       }
       if (val == 2) {
         this.show = 2;
-        console.log("baseLayer")
+        console.log("baseLayer");
         await dobaseVectorLayer(this, { id: "baseLayer", url: baseurl });
-
       }
       if (val == 3) {
         this.show = 2;
-        console.log("dataLayer")
+        console.log("dataLayer");
         await dobaseVectorLayer(this, { id: "dataLayer", url: dataurl });
-
       }
       if (val == 4) {
         this.show = 2;
@@ -126,7 +133,7 @@ export default {
   width: 100%;
 }
 
-#baseview{
+#baseview {
   height: 100%;
   width: 100%;
 }
