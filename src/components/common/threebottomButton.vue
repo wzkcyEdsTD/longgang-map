@@ -1,8 +1,11 @@
 <template>
   <div class="threebottomtn">
     <ul>
-      <li @click="doSwitch(0)" :class="{active:forceColor == 0}" >三维</li>
-      <li @click="doSwitch(1)" :class="{active:forceColor == 1}">倾斜投影</li>
+      <li @click="doSwitch(2)" :class="{active:forceColor == 2}">基础</li>
+      <li @click="doSwitch(3)" :class="{active:forceColor == 3}">大数据</li>
+      <li @click="doSwitch(4)" :class="{active:forceColor == 4}">影像</li>
+      <li @click="doSwitch(0)" :class="{active:forceColor == 0}" >三维基模</li>
+      <li @click="doSwitch(1)" :class="{active:forceColor == 1}">三维实模</li>
     </ul>
   </div>
 </template>

@@ -25,8 +25,8 @@ export default {
   name: "lgCim",
   data() {
     return {
-      forceColor:1,
-      lgshow:1
+      forceColor:2,
+      lgshow:2
     };
   },
   components: {

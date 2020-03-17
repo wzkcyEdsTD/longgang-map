@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style>
+@import url("../src/assets/css/common.css");
 * {
   padding: 0;
   margin: 0;
@@ -23,6 +24,7 @@ html,
 body {
   height: 100%;
   font-size: 16px;
+  overflow: auto;
 }
 #app {
   height: 100%;

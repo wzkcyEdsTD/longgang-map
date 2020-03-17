@@ -1,30 +1,32 @@
 <template>
-<div class="sencemap">
-  <div id="senceview" v-if="show"></div>
-  <div id="threeview" v-if="!show"></div>
-</div>
-
+  <div class="sencemap">
+    <div id="baseview" v-if="show==2"></div>
+    <div id="senceview" v-if="show==0"></div>
+    <div id="threeview" v-if="show==1"></div>
+  </div>
 </template>
 
 <script>
 import { loadModules } from "esri-loader";
-import { doMeshLayer } from "./sence.js"
+import { doMeshLayer,dobaseVectorLayer } from "./sence.js";
+import {baseurl,dataurl,yxurl} from "../../../config/config"
 
 const OPTION = {
   url:
     "https://lysb.lucheng.gov.cn/lc/libs/arcgis_js_v412_api/arcgis_js_api/library/4.12/dojo/dojo.js"
 };
 
-const luxi_url="http://10.36.213.3/server/rest/services/Hosted/luxidao_origin/SceneServer"
+const luxi_url =
+  "http://10.36.213.3/server/rest/services/Hosted/luxidao_origin/SceneServer";
 
 export default {
   data() {
     return {
-      show:true
+      show: 0
     };
   },
-  async mounted(){
-     await this.init()
+  async mounted() {
+    await this.init();
   },
   methods: {
     init() {
@@ -35,24 +37,53 @@ export default {
             "esri/WebScene",
             "esri/views/SceneView",
             "esri/config",
-            "esri/widgets/Popup"
+            "esri/widgets/Popup",
           ],
           OPTION
         )
           .then(([WebScene, SceneView, esriConfig, Popup]) => {
             esriConfig.portalUrl = "http://services.wzmap.gov.cn/portal";
+
             that.map = new WebScene({
-              id:'threeLayer',
+              id: "threeLayer",
               portalItem: {
                 id: "4d4273e2d2874b34bb2262f6fd5c7115"
               },
             });
+            //
+            // console.log(that.map.allLayers)
+            
+            var template = {
+  // autocasts as new PopupTemplate()
+  title: "房屋信息",
+  content:`<div class="template">
+          <ul><li>出租人：李明</li>
+          <li>承租人：王刚</li>
+          <li>电话联系：13745983567</li>
+          <li>户籍地：李明</li>
+          <li><div class="template_img"><img src="../../../static/images/ecode.png"></img></div></li>
+          </ul>
+          </div> `
+};
+// "170d2772d7a-layer-2"
+              that.map.when(function(){
+                                console.log("文字加载")
+                that.map.layers.items.forEach(item => {
+                  if(item.id=="170d2772d7a-layer-2"){
+                    item.popupTemplate=template
+                  }
+                });
+              })
+
+            // console.log(that.map)
+            // console.log(that.map.layers.items[1])
+            // console.log(that.map.findLayerById("170d2772d7a-layer-2"))
+            //that.map.findLayerById("170d2770d9f-layer-1").popupTemplate =template
 
             that.sceneview = new SceneView({
               map: that.map,
               container: "senceview"
             });
-
             resolve(true);
           })
           .catch(err => {
@@ -60,32 +91,51 @@ export default {
           });
       });
     },
-      async switchSenceLayer(val){
-    if(val ==0){
-      this.show=true
-      await this.init()
-    }
-    if(val ==1){
-      this.show=false
-      await doMeshLayer(this,{id:"MeshLayer",url:luxi_url})
+    async switchSenceLayer(val) {
+      if (val == 0) {
+        this.show = 0;
+        await this.init();
+      }
+      if (val == 1) {
+        this.show = 1;
+        await doMeshLayer(this, { id: "MeshLayer", url: luxi_url });
+      }
+      if (val == 2) {
+        this.show = 2;
+        console.log("baseLayer")
+        await dobaseVectorLayer(this, { id: "baseLayer", url: baseurl });
+
+      }
+      if (val == 3) {
+        this.show = 2;
+        console.log("dataLayer")
+        await dobaseVectorLayer(this, { id: "dataLayer", url: dataurl });
+
+      }
+      if (val == 4) {
+        this.show = 2;
+      }
     }
   }
-  },
 };
 </script>
 
 <style>
-.sencemap{
-    height: 100%;
+.sencemap {
+  height: 100%;
   width: 100%;
 }
 
+#baseview{
+  height: 100%;
+  width: 100%;
+}
 #senceview {
   height: 100%;
   width: 100%;
 }
-#threeview{
-    height: 100%;
+#threeview {
+  height: 100%;
   width: 100%;
 }
 </style>

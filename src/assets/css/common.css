@@ -20,3 +20,17 @@ ol,ul,li { list-style:none;}
 img{ 
     border:none;
 }
+
+
+
+.esri-popup__main-container  .template{
+list-style: none;
+}
+
+.esri-popup__main-container .template.template_img{
+  width: 200px;
+}
+.template_img img{
+  width: 100%;
+}
+
