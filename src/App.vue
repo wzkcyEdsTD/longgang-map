@@ -12,6 +12,7 @@ export default {
 
 <style>
 @import url("../src/assets/css/common.css");
+@import url('../src/assets/common/font/font.css');
 * {
   padding: 0;
   margin: 0;
@@ -20,12 +21,6 @@ ol ul li {
   list-style: none;
 }
 
-html,
-body {
-  height: 100%;
-  font-size: 16px;
-  overflow: auto;
-}
 #app {
   height: 100%;
 }

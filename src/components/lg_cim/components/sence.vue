@@ -54,15 +54,16 @@ export default {
             // console.log(that.map.allLayers)
 
             var template = {
-              // autocasts as new PopupTemplate()
               title: "房屋信息",
               content: `<div class="template">
+              <div class="template_contnet">
           <ul><li>出租人：李明</li>
           <li>承租人：王刚</li>
           <li>电话联系：13745983567</li>
           <li>户籍地：李明</li>
-          <li><div class="template_img"><img src="../../../static/images/ecode.png"></img></div></li>
           </ul>
+          </div>  
+          <div class="template_img"><img src="../../../static/images/ecode.png"></img></div>
           </div> `
             };
             // "170d2772d7a-layer-2"
@@ -74,11 +75,6 @@ export default {
                 }
               });
             });
-
-            // console.log(that.map)
-            // console.log(that.map.layers.items[1])
-            // console.log(that.map.findLayerById("170d2772d7a-layer-2"))
-            //that.map.findLayerById("170d2770d9f-layer-1").popupTemplate =template
 
             that.sceneview = new SceneView({
               map: that.map,
@@ -93,6 +89,11 @@ export default {
                 heading: 0
               }
             });
+
+            that.sceneview.ui.components = [];
+            // that.sceneview.ui.remove('zoom')//清除放大缩小按钮
+            // that.sceneview.ui.remove('attribution')//清楚底部powered by ESR
+
             resolve(true);
           })
           .catch(err => {

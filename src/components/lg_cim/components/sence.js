@@ -52,15 +52,16 @@ export const doMeshLayer = (context, { url, id }) => {
           });
 
           context.sceneview.popup.content =
-            `<div class="template">
-              <ul>
-                <li>出租人：李明</li>
-                <li>承租人：王刚</li>
-                <li>电话联系：13745983567</li>
-                <li>户籍地：李明</li>
-                <li><div class="template_img"><img src="../../../static/images/ecode.png"></img></div></li>
-              </ul>
-             </div>`;
+          `<div class="template">
+          <div class="template_contnet">
+      <ul><li>出租人：李明</li>
+      <li>承租人：王刚</li>
+      <li>电话联系：13745983567</li>
+      <li>户籍地：李明</li>
+      </ul>
+      </div>  
+      <div class="template_img"><img src="../../../static/images/ecode.png"></img></div>
+      </div> `
         })
 
         resolve(true);

@@ -3,11 +3,31 @@
     margin: 0;
   }
   
+/* 
+  @media screen and (max-width: 1280px) {
+    .top_title {
+      width: 1280px;
+      height: 58px;
+    }
+}
+
+@media screen and (min-width:1365px )and (max-width:1980px) {
+  .top_title {
+    width: 1980px;
+    height: 85px;
+  }
+} */
+
+
+
+
+
 html,
 body {
     height: 100%;
     overflow: hidden;
-    font-size: 16px;
+    overflow: auto;
+    font-size: 12px;
   }
 
 ol,ul,li { list-style:none;}
@@ -21,16 +41,57 @@ img{
     border:none;
 }
 
-
-
-.esri-popup__main-container  .template{
-list-style: none;
+/*缩放字体*/
+.small-font{
+  font-size: 12px;
+  -webkit-transform-origin-x: 20;
+  -webkit-transform: scale(0.50);
 }
 
-.esri-popup__main-container .template.template_img{
-  width: 200px;
+
+
+/* sence三维基础地图*/
+
+.esri-popup__main-container  .template{
+  padding-top: 10px;
+  color: #CECECE;
+list-style: none;
+display: flex;
+}
+.esri-popup__main-container .template .template_contnet{
+width: 60%;
+}
+
+.esri-popup__main-container .template .template_img{
+  width: 40%;
 }
 .template_img img{
   width: 100%;
 }
 
+.sencemap .esri-widget{
+  background: url(../image//base/弹窗.png) 0 0 no-repeat;
+  background-size: 100% 100%;
+  background-color:none !important;
+  color: #ffffff;
+}
+
+.sencemap .esri-popup--shadow{
+  box-shadow:none !important;
+}
+
+.sencemap .esri-popup__header-container{
+  padding-left: 20px;
+}
+
+.sencemap .esri-popup__button{
+  color: #ffffff;
+}
+
+.sencemap .esri-popup__button--dock{
+  display: none;
+}
+
+.sencemap .esri-popup__inline-actions-container{
+  display: none;
+}
