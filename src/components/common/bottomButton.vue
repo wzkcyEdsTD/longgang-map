@@ -58,7 +58,7 @@ export default {
   height: 140px;
   overflow: hidden;
   cursor: pointer;
-  background: url(../../assets/image/base/base_no_active.png);
+  background: url(../../assets/image/base_no_active.png);
   background-size: 100% 100%;
 }
 
@@ -78,14 +78,14 @@ export default {
 }
 
 .bottombtn li:hover {
-  background: url(../../assets/image/base/base_active.png);
+  background: url(../../assets/image/base_active.png);
   background-size: 100% 100%;
 
   color: #ffffff;
 }
 
 .bottombtn .active {
-  background: url(../../assets/image/base/base_active.png);
+  background: url(../../assets/image/base_active.png);
   background-size: 100% 100%;
   color: #ffffff;
 }

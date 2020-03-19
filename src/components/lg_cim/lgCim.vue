@@ -67,7 +67,7 @@ export default {
 
 .handel {
   z-index: 100;
-  background: url(../../assets/image/base/handel.png);
+  background: url(../../assets/image/handel.png);
   background-size: 100% 100%;
   position: absolute;
   width: 148px;
@@ -76,13 +76,7 @@ export default {
   right: 0px;
 }
 
-/* .shadow{
-  position:absolute;
-    background: url(../../assets/image/base/shadow.png);
-    background: 100%;
-  width: 380px;
-  height: 190px;
-} */
+
 
 .switch3 {
   z-index: 100;
@@ -99,7 +93,7 @@ export default {
   list-style: none;
   width: 380px;
   height: 190px;
-  background: url(../../assets/image/base/three_no_active.png);
+  background: url(../../assets/image/three_no_active.png);
   background-size: 100% 100%;
   cursor: pointer;
   overflow: hidden;
@@ -141,7 +135,7 @@ export default {
 }
 
 .switch3 li:hover {
-  background: url(../../assets/image/base/three_active.png);
+  background: url(../../assets/image/three_active.png);
   background-size: 100% 100%;
   color: #ffffff;
 
@@ -149,7 +143,7 @@ export default {
 }
 
 .switch3 .active {
-  background: url(../../assets/image/base/three_active.png);
+  background: url(../../assets/image/three_active.png);
   background-size: 100% 100%;
   color: #ffffff;
 }
