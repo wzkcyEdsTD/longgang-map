@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import lgCim from '../components/lg_cim/lgCim.vue'
 
 import camera from '../components/lg_cim/components/camera.vue'
+import mapbox from '../components/lg_cim/components/mapbox.vue'
 
 // import lgCim from '../components/lg_cim/components/leftDiv'
 // import lgCim from '../components/lg_cim/components/rightDiv'
@@ -33,6 +34,10 @@ export default new Router({
           // path: "/",
           // name: "Mobile",
           // component: Mobile
+        },{
+          path:'/mapbox',
+          name:'mapbox',
+          component:mapbox
         }
       ]
   });
