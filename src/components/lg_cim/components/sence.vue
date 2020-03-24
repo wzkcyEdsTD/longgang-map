@@ -68,7 +68,6 @@ export default {
             };
             // "170d2772d7a-layer-2"
             that.map.when(function() {
-              console.log("文字加载");
               that.map.layers.items.forEach(item => {
                 if (item.id == "170d2772d7a-layer-2") {
                   item.popupTemplate = template;
@@ -83,7 +82,7 @@ export default {
                 position: {
                   x: 120.54914499,
                   y: 27.568205,
-                  z: 5000
+                  z: 50000
                 },
                 tilt: 0,
                 heading: 0
@@ -134,7 +133,8 @@ export default {
         this.show = 2;
       }
       if(val ==5){
-        this.show = 2
+        this.show = 0
+        console.log("this数据",this)
         await dobaseImageLayer(this, { id: "gridLayer", url: lgwgurl });
       }
     }

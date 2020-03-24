@@ -83,36 +83,36 @@ export const dobaseImageLayer = (context, { url, id }) => {
   //   context.map.findLayerById("imgLayer") && (context.map.findLayerById("imgLayer").visible = false);
   //   return
   // }
-  return new Promise((resolve, reject) => {
-    loadModules(["esri/Map",
-      "esri/layers/MapImageLayer",
-      "esri/views/SceneView"]).then(([Map, MapImageLayer, SceneView]) => {
-        context.map = new Map({
-          spatialReference: {
-            wkid: 4490
-          }
-        })
-        const option = { url, id };
-        const baseVector = new MapImageLayer(option);
-        context.map.add(baseVector);
 
-        context.view = new SceneView({
-          container: 'baseview',
-          map: context.map,
-          // camera: {
-          //   position: {
-          //     x: 120,
-          //     y: 27.99,
-          //     z: 200,
-          //     spatialReference: {
-          //       wkid: 4326
-          //     }
-          //   },
-          //   tilt: 84,
-          //   heading: 85
-          // }
-        })
-        context.view.ui.components = [];
+  // that.map.layers.items
+  return new Promise((resolve, reject) => {
+    loadModules([
+      "esri/layers/MapImageLayer",
+      "esri/views/SceneView"]).then(([MapImageLayer, SceneView]) => {
+        const option = { url, id };
+        const imglayer = new MapImageLayer(option);
+        context.map.layers.add(imglayer);
+
+        // console.log(" context.map.layers",context.map.layers)
+
+        // context.sceneview= 
+        // context.view = new SceneView({
+        //   container: 'baseview',
+        //   map: context.map,
+        //   // camera: {
+        //   //   position: {
+        //   //     x: 120,
+        //   //     y: 27.99,
+        //   //     z: 200,
+        //   //     spatialReference: {
+        //   //       wkid: 4326
+        //   //     }
+        //   //   },
+        //   //   tilt: 84,
+        //   //   heading: 85
+        //   // }
+        // })
+        context.sceneview.ui.components = [];
 
         resolve(true);
       });
