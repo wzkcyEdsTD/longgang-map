@@ -63,6 +63,7 @@ export const doMeshLayer = (context, { url, id }) => {
       <div class="template_img"><img src="../../../static/images/ecode.png"></img></div>
       </div> `
         })
+        context.sceneview.ui.components = [];
 
         resolve(true);
       }).catch()
@@ -75,7 +76,7 @@ export const doMeshLayer = (context, { url, id }) => {
  * @param {*} { url, id } 
  */
 
-export const dobaseVectorLayer = (context, { url, id }) => {
+export const dobaseImageLayer = (context, { url, id }) => {
   // if (context.map.findLayerById(id)) {
   //   context.map.findLayerById(id).visible = true
   //   context.map.findLayerById("dataLayer") && (context.map.findLayerById("dataLayer").visible = false);
@@ -84,15 +85,15 @@ export const dobaseVectorLayer = (context, { url, id }) => {
   // }
   return new Promise((resolve, reject) => {
     loadModules(["esri/Map",
-      "esri/layers/VectorTileLayer",
-      "esri/views/SceneView"]).then(([Map, VectorTileLayer, SceneView]) => {
+      "esri/layers/MapImageLayer",
+      "esri/views/SceneView"]).then(([Map, MapImageLayer, SceneView]) => {
         context.map = new Map({
           spatialReference: {
-            wkid: 4326
+            wkid: 4490
           }
         })
         const option = { url, id };
-        const baseVector = new VectorTileLayer(option);
+        const baseVector = new MapImageLayer(option);
         context.map.add(baseVector);
 
         context.view = new SceneView({
@@ -111,6 +112,7 @@ export const dobaseVectorLayer = (context, { url, id }) => {
           //   heading: 85
           // }
         })
+        context.view.ui.components = [];
 
         resolve(true);
       });

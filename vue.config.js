@@ -3,18 +3,27 @@
 module.exports={
     publicPath: "./",
     assetsDir: "libs",
-    // configureWebpack: (config) => {
-    //     config.module.rules.push({
-    //       // 处理字体
-    //       test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-    //       use: [{
-    //         loader: 'url-loader',
-    //         options: {
-    //             limit: 10000,
-    //             // name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-    //             name: 'resourse/[name].[hash:7].[ext]'
-    //         }
-    //       }]
-    //     })
-    //   }
+    devServer:{
+        port:8080,
+		https:false,
+		open:false,
+        proxy: { 
+            '/api': {  
+              target: 'http://127.0.0.1:5000',  // http://127.0.0.1:5000/api/appconfig/format
+              changeOrigin: true, 
+              pathRewrite: { 
+                '^/api': '/api'
+                } 
+            } 
+          }
+    }
+
 }
+
+
+/**
+ * 原有的接口有跨域问题 后来我改为node服务器拿到数据，用proxy代理到node服务器，
+ * 结果一直报404，
+ * 最后查明原因，每次配置完vue.config.js都要重启项目
+ * 
+ */

@@ -8,8 +8,8 @@
 
 <script>
 import { loadModules } from "esri-loader";
-import { doMeshLayer, dobaseVectorLayer } from "./sence.js";
-import { baseurl, dataurl, yxurl } from "../../../config/config";
+import { doMeshLayer, dobaseImageLayer } from "./sence.js";
+import { baseurl, dataurl, yxurl,lgwgurl } from "../../../config/config";
 
 const OPTION = {
   url:
@@ -101,6 +101,16 @@ export default {
           });
       });
     },
+    /**
+     * show
+     * 2 基础地图
+     * 0 白模
+     * 1 倾斜三维
+     * 
+     * val 0 1 三维白模 三维倾斜
+     * val 2 3 4 基础 大数据 影像
+     * val 5 社区网格
+     */
     async switchSenceLayer(val) {
       if (val == 0) {
         this.show = 0;
@@ -113,15 +123,19 @@ export default {
       if (val == 2) {
         this.show = 2;
         console.log("baseLayer");
-        await dobaseVectorLayer(this, { id: "baseLayer", url: baseurl });
+        // await dobaseVectorLayer(this, { id: "baseLayer", url: baseurl });
       }
       if (val == 3) {
         this.show = 2;
         console.log("dataLayer");
-        await dobaseVectorLayer(this, { id: "dataLayer", url: dataurl });
+        // await dobaseVectorLayer(this, { id: "dataLayer", url: dataurl });
       }
       if (val == 4) {
         this.show = 2;
+      }
+      if(val ==5){
+        this.show = 2
+        await dobaseImageLayer(this, { id: "gridLayer", url: lgwgurl });
       }
     }
   }

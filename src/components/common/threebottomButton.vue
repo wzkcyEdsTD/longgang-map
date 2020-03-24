@@ -1,6 +1,12 @@
 <template>
   <div class="threebottomtn">
     <ul>
+      <li @click="doSwitch(5)" :class="{active:forceColor == 5}">
+        <div class="btn_font">
+          <span>社区网格</span>
+          <span class="small-font">Community Grid</span>
+        </div>
+      </li>
       <li @click="doSwitch(2)" :class="{active:forceColor == 2}">
         <div class="btn_font">
           <span>基础</span>
