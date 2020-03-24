@@ -112,6 +112,7 @@ export const dobaseImageLayer = (context, { url, id }) => {
         //   //   heading: 85
         //   // }
         // })
+        context.sceneview.zoom=13
         context.sceneview.ui.components = [];
 
         resolve(true);

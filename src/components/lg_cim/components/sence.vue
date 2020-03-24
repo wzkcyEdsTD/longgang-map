@@ -134,7 +134,6 @@ export default {
       }
       if(val ==5){
         this.show = 0
-        console.log("this数据",this)
         await dobaseImageLayer(this, { id: "gridLayer", url: lgwgurl });
       }
     }
